@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#030a07;font-family:system-ui,sans-serif}
+.bg{position:fixed;inset:0;background:radial-gradient(ellipse at 50% 42%,#14472f 0%,#071a11 62%,#030a07 100%)}
+.grid{position:fixed;inset:0;background-image:linear-gradient(rgba(127,227,168,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(127,227,168,.08) 1px,transparent 1px);background-size:48px 48px;animation:pan 8s linear infinite}
+@keyframes pan{to{background-position:48px 48px}}
+svg{position:fixed;inset:0;width:100%;height:100%;opacity:.6}
+path{fill:none;stroke:#ffd24a;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2600;stroke-dashoffset:2600;filter:drop-shadow(0 0 7px #ffd24a);animation:draw 2.9s .2s ease-out forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.wrap{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.t{display:flex;font-weight:800;font-size:min(8.8vw,76px);letter-spacing:.06em}
+.t span{opacity:0;transform:translateY(30px) scale(.55);filter:blur(10px);background:linear-gradient(90deg,#ffe9a6,#ffd24a 45%,#7fe3a8);-webkit-background-clip:text;background-clip:text;color:transparent;animation:in .7s forwards}
+@keyframes in{to{opacity:1;transform:none;filter:none}}
+.s{margin-top:10px;font-weight:300;font-size:min(3.6vw,28px);color:#8fd1ac;opacity:0;animation:sub 1.7s 1s forwards}
+@keyframes sub{from{opacity:0;letter-spacing:1.4em}to{opacity:1;letter-spacing:.55em}}
+.glow{position:fixed;left:50%;top:50%;width:60vw;height:60vw;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,210,74,.14),transparent 60%);animation:pulse 2.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.35;transform:translate(-50%,-50%) scale(1.15)}}
+.tag{position:fixed;bottom:5vh;width:100%;text-align:center;color:#5fa882;font-size:13px;letter-spacing:.3em;opacity:0;animation:sub 1.5s 2s forwards}
+</style></head><body>
+<div class="bg"></div><div class="grid"></div><div class="glow"></div>
+<svg viewBox="0 0 1000 400" preserveAspectRatio="none"><path d="M0,330 L150,330 C170,265 235,265 252,322 L256,330 L256,120 C256,35 352,35 352,120 L352,330 L356,322 C373,265 438,265 458,330 L1000,330"/></svg>
+<div class="wrap"><div class="t" id="t"></div><div class="s">corporation</div></div>
+<div class="tag">GRAPHWAR · HELPER</div>
+<script>
+"MANMASTER'S".split('').forEach(function(ch,i){var e=document.createElement('span');e.textContent=ch;e.style.animationDelay=(0.2+i*0.08)+'s';document.getElementById('t').appendChild(e)});
+</script></body></html>
