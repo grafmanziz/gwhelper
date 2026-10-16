@@ -11,9 +11,10 @@ jobs:
       - name: Unpack project
         run: |
           ls -la
-          test -f gw2.zip || { echo "НЕТ ФАЙЛА gw2.zip В КОРНЕ РЕПОЗИТОРИЯ"; exit 1; }
-          unzip -o gw2.zip -d proj
-          ls proj
+          ZIP=$(ls gw*.zip | sort -V | tail -n 1)
+          test -n "$ZIP" || { echo "НЕТ gw*.zip В КОРНЕ РЕПОЗИТОРИЯ"; exit 1; }
+          echo "Собираю из $ZIP"
+          unzip -o "$ZIP" -d proj
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -25,5 +26,5 @@ jobs:
         working-directory: proj
       - uses: actions/upload-artifact@v4
         with:
-          name: gw-helper-v2-${{ github.run_number }}
+          name: gw-helper-v3-${{ github.run_number }}
           path: proj/app/build/outputs/apk/debug/app-debug.apk
